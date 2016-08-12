@@ -1,0 +1,25 @@
+{% extends 'medications/base.html' %}
+  {% block content %}
+    {% if medications_list %}
+      <table class='table'>
+        <tr>
+          <th>Patient</th>
+          <th>Prescription</th>
+          <th>Started</th>
+          <th>Stopped</th>
+          <th>Refills left</th>
+        </tr>
+        {% for medication in medications_list %}
+        <tr>
+          <td><a href='#'>{{ medication.patient }}</a></td>
+          <td>{{ medication.name }}</td>
+          <td>{{ medication.date_started_taking }}</td>
+          <td>{{ medication.date_stopped_taking }}</td>
+          <td>{{ medication.number_refills }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>No medications!</p>
+    {% endif %}
+  {% endblock %}
